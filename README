@@ -16,7 +16,7 @@ An example of the format of the input file is as followed,
 ...
 Generally speaking, the format of the input file is similar with the one used in SNAP (http://snap.stanford.edu/data/). Each line is an edge of the graph and there should be M lines in the input file if the graph has M edges. The first integer of each line denotes the start node of the edge and the second integer denotes the end node of the edge. No duplicate edges are allowed. The node IDs of the dataset should be continuous and start with 0.
 
-Tested on Linux system using GCC 4.9.2.
+Tested on Linux system using GCC 4.9.2 and GCC 5.3.0.
 
 Please cite our paper if the software is used for research works.
 @inproceedings{Wei:2016:SGP:2882903.2915220,
