@@ -102,11 +102,9 @@ public:
 			top=index;
 		}
 
-#ifndef Release
 		if(key+4>=Header.size()){
 			Header.resize(Header.size()*1.5);
 		}		
-#endif
 	}
 };
 
