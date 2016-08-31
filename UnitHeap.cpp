@@ -150,7 +150,14 @@ void UnitHeap::ReConstruct(){
 			key=tmpkey;
 		}
 	}
-	Header[key].second=tmp[tmp.size()-1];
+	if(key==LinkedList[tmp[tmp.size()-1]].key)
+		Header[key].second=tmp[tmp.size()-1];
+	else{
+		Header[key].second=tmp[tmp.size()-2];
+		int lastone=tmp[tmp.size()-1];
+		int lastkey=LinkedList[lastone].key;
+		Header[lastkey].first=Header[lastkey].second=lastone;
+	}
 	top=tmp[0];
 	
 }
