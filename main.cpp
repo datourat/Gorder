@@ -13,12 +13,12 @@
 #include <cstdint>
 #include <cstring>
 #include <chrono>
-#include <sys/time.h>
 
 #include "Graph.h"
 #include "Util.h"
 
 using namespace std;
+using namespace Gorder;
 
 const int INPUTNUM=1;
 
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]){
 
 	if(argc==1){
 		cout << "please provide parameter" << endl;
-		exit(0);
+		quit();
 	}
 
 	i=1;
@@ -72,6 +72,5 @@ int main(int argc, char* argv[]){
 	cout << "Begin Output the Reordered Graph" << endl;
 	g.PrintReOrderedGraph(order);
 	cout << endl;
-
 }
 

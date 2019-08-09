@@ -12,6 +12,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include "UnitHeap.h"
 
+namespace Gorder
+{
+
 UnitHeap::UnitHeap(int size){
 	heapsize=size;
 	if(size>0){
@@ -162,3 +165,4 @@ void UnitHeap::ReConstruct(){
 	
 }
 
+}

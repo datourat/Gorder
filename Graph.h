@@ -34,6 +34,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "Util.h"
 #include "UnitHeap.h"
 
+namespace Gorder
+{
+
 using namespace std;
 
 class Vertex{
@@ -84,6 +87,7 @@ class Graph{
 		unsigned long long LocalityScore(const int w);
 };
 
+}
 
 #endif
 
