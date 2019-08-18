@@ -12,6 +12,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include "Graph.h"
 
+#ifdef __GNUC__
+#define likely(cond) __builtin_expect(!!(cond), 1)
+#define unlikely(cond) __builtin_expect(!!(cond), 0)
+#else
+#define likely(cond) (!!(cond))
+#define unlikely(cond) (!!(cond))
+#endif // GNUC
+
+namespace Gorder
+{
+
 string Graph::getFilename(){
 	return name;
 }
@@ -533,7 +544,7 @@ void Graph::GorderGreedy(vector<int>& retorder, int window){
 						unitheap.update[u]=INT_MAX/2;
 #endif
 					if(graph[u].outdegree>1)
-					if(binary_search(&outedge[graph[u].outstart], &outedge[graph[u+1].outstart], v)==false){
+					if(binary_search(outedge.data() + graph[u].outstart, outedge.data() + graph[u+1].outstart, v)==false){
 						for(int j=graph[u].outstart, limit2=graph[u+1].outstart; j<limit2; j++){
 							int w=outedge[j];
 							unitheap.update[w]--;
@@ -555,7 +566,7 @@ void Graph::GorderGreedy(vector<int>& retorder, int window){
 		if(graph[v].outdegree<=hugevertex){
 			for(int i=graph[v].outstart, limit1=graph[v+1].outstart; i<limit1; i++){
 				int w=outedge[i];
-				if(__builtin_expect(unitheap.update[w]==0, 0)){
+				if(unlikely(unitheap.update[w]==0)){
 					unitheap.IncrementKey(w);
 				} else {
 #ifndef Release
@@ -571,7 +582,7 @@ void Graph::GorderGreedy(vector<int>& retorder, int window){
 		for(int i=graph[v].instart, limit1=graph[v+1].instart; i<limit1; i++){
 			int u=inedge[i];
 			if(graph[u].outdegree<=hugevertex){
-				if(__builtin_expect(unitheap.update[u]==0, 0)){
+				if(unlikely(unitheap.update[u]==0)){
 					unitheap.IncrementKey(u);
 				} else {
 #ifndef Release
@@ -585,7 +596,7 @@ void Graph::GorderGreedy(vector<int>& retorder, int window){
 					if(graph[u].outdegree>1)
 					for(int j=graph[u].outstart, limit2=graph[u+1].outstart; j<limit2; j++){
 						int w=outedge[j];
-						if(__builtin_expect(unitheap.update[w]==0, 0)){
+						if(unlikely(unitheap.update[w]==0)){
 							unitheap.IncrementKey(w);
 						}else{
 #ifndef Release
@@ -728,3 +739,4 @@ unsigned long long Graph::LocalityScore(const int w){
 	return sum;
 }
 
+}

@@ -1,5 +1,8 @@
 #include "Util.h"
 
+namespace Gorder
+{
+
 unsigned long long MyRand64(){
 	unsigned long long ret, tmp;
 	ret=rand();
@@ -24,3 +27,4 @@ void quit(){
 	exit(0);
 }
 
+}

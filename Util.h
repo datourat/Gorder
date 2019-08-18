@@ -11,6 +11,9 @@
 #include <string>
 #include <cstring>
 
+namespace Gorder
+{
+
 using namespace std;
 
 unsigned long long MyRand64();
@@ -144,6 +147,8 @@ public:
 	}
 
 };
+
+}
 
 #endif
 
